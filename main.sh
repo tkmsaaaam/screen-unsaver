@@ -6,9 +6,12 @@ ROOT=$(
 )
 
 echo $(date)
+INTERVAL=295
 
 for i in $(seq 100); do
   osascript $ROOT/click.scpt
-  echo $i
-  sleep 295
+  MINUTES=`expr $(( $i - 1 )) \* $INTERVAL / 60`
+
+  echo "\n${MINUTES} minutes gone"
+  sleep $INTERVAL
 done
